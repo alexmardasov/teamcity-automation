@@ -1,0 +1,34 @@
+version: '3.7'
+# Default ${TEAMCITY_VERSION} is defined in .env file
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=teamcity_password
+      - POSTGRES_USER=teamcity_user
+      - POSTGRES_DB=teamcity_db
+      - PG_DATA=/var/lib/postgresql/data
+    volumes:
+      - ../apps_data/db:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  teamcity:
+    image: jetbrains/teamcity-server:${TEAMCITY_VERSION}
+    ports:
+      - "8112:8111"
+    volumes:
+      - ../apps_data/teamcity:/data/teamcity_server/datadir
+      - ../logs/teamcity-server-logs:/opt/teamcity/logs
+    depends_on:
+      - db
+
+  teamcity-agent:
+    depends_on:
+      - teamcity
+    image: jetbrains/teamcity-minimal-agent:${TEAMCITY_VERSION}
+    privileged: true
+    volumes:
+      - ../config/agent:/data/teamcity_agent/conf

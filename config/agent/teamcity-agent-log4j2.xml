@@ -1,0 +1,5 @@
+<Loggers>
+    <Logger name="jetbrains.buildServer" level="DEBUG">
+        <AppenderRef ref="ROLL"/>
+    </Logger>
+</Loggers>

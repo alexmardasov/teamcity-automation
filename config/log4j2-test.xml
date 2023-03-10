@@ -1,0 +1,23 @@
+<Configuration>
+    <Appenders>
+        <Console name="C" target="SYSTEM_OUT">
+            <PatternLayout pattern="%level{length=1} %d{yyMMdd HHmmss.SSS} [%t] %c{1} - %msg%n"/>
+        </Console>
+        <RandomAccessFile name="R" fileName="logs/tests/debug.log" append="false">
+            <PatternLayout pattern="%level{length=1} %d{yyMMdd HHmmss.SSS} [%t] %c{1} - %msg%n"/>
+        </RandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.jetbrains.teamcity.*" level="INFO" additivity="false"/>
+        <Logger name="STATS_LOGGER" level="OFF" additivity="false"/>
+
+        <!-- Apache HTTP transport used by testcontainers -->
+        <Logger name="com.github.dockerjava.zerodep.shaded" level="INFO" additivity="false"/>
+        <Logger name="com.github.dockerjava.zerodep" level="INFO" additivity="false"/>
+
+        <Root level="DEBUG">
+            <appender-ref ref="C" level="DEBUG"/>
+            <appender-ref ref="R" level="DEBUG"/>
+        </Root>
+    </Loggers>
+</Configuration>

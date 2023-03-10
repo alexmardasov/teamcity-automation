@@ -1,0 +1,6 @@
+#Ignore all logs
+/logs/
+#Ignore target
+/target/
+#Ignore data that is produced by apps
+/apps_data/
