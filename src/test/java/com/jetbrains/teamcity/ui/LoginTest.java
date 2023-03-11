@@ -1,5 +1,6 @@
-package com.jetbrains.teamcity;
+package com.jetbrains.teamcity.ui;
 
+import com.jetbrains.teamcity.platform.TeamcityBrowserContainer;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Container;
@@ -12,7 +13,6 @@ public class LoginTest {
     @Container
     private final TeamcityBrowserContainer browser = TeamcityBrowserContainer.provideDriver();
 
-
     @BeforeAll
     public static void init() {
 
@@ -22,5 +22,6 @@ public class LoginTest {
     public void loginTest() {
         var driver = browser.getWebDriver();
         driver.get("http://host.docker.internal:8112");
+        //UserService.getAllUsers();
     }
 }

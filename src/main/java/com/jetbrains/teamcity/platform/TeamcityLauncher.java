@@ -1,4 +1,4 @@
-package com.jetbrains.teamcity;
+package com.jetbrains.teamcity.platform;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,19 +11,22 @@ import java.time.Duration;
 public class TeamcityLauncher {
 
     private static final Logger log = LoggerFactory.getLogger(TeamcityLauncher.class);
-    private static final String SERVER_NAME = "teamcity";
+    private static final String TC_SERVICE_NAME = "teamcity";
 
     public TeamcityLauncher() {
     }
 
+    /**
+     * Method that is launched the container with Teamcity from docker-compose file.
+     * If the checked message isn't appear at the log within 3 minutes, it fails with the error.
+     */
     public void launch() {
         log.info("Starting container with Teamcity...");
         var container = new DockerComposeContainer<>(getComposeFile())
-                .withExposedService(
-                        SERVER_NAME, 8111,
-                        Wait.defaultWaitStrategy().withStartupTimeout(Duration.ofSeconds(10)))
-                .withEnv("HOST_IP_ADDRESS", SERVER_NAME)
-                .withLocalCompose(true);
+                .withExposedService(TC_SERVICE_NAME, 8111)
+                .withEnv("HOST_IP_ADDRESS", TC_SERVICE_NAME)
+                .waitingFor(TC_SERVICE_NAME, Wait.forLogMessage(".*TeamCity is running.*\\n", 1)
+                                .withStartupTimeout(Duration.ofMinutes(3)));
 
         container.start();
     }

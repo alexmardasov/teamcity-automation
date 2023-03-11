@@ -4,8 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b0c94c0-8194-4380-b9c6-0720ceecd780" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="9b0c94c0-8194-4380-b9c6-0720ceecd780" name="Changes" comment="-- launcher added">
+      <change afterPath="$PROJECT_DIR$/script.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/BuildService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/MatcherGeneratorConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/ProjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/Specs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/project/CreateNewProjectRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/project/CreateNewProjectResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/project/ParentProject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/AllUsersWithCountResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/CreateNewUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/CreateNewUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/CreateTokenRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/CreateTokenResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/pojos/user/UserItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/ProjectTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database/database.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/.env" beforeDir="false" afterPath="$PROJECT_DIR$/docker/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/teamcity-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/teamcity-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/platform/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/TeamcityBrowserContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/platform/TeamcityBrowserContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/TeamcityLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/platform/TeamcityLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/TestTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/platform/TestTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.junit.jupiter.api.extension.Extension" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.junit.jupiter.api.extension.Extension" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/ui/LoginTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +47,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/io/rest-assured/rest-assured/5.3.0/rest-assured-5.3.0.jar!/io/restassured/specification/RequestSpecification.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,42 +67,51 @@
     </option>
   </component>
   <component name="ProjectId" id="2Mh53o3Nj5stOn289z2DJRZDg87" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/amardasov/IdeaProjects/teamcity-automation/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Educational&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "aspect.path.notification.shown": "true",
+    "last_opened_file_path": "/Users/amardasov/IdeaProjects/teamcity-automation/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/config/agent/conf" />
       <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/resources/META-INF/services" />
+      <recent name="$PROJECT_DIR$/apps_data/teamcity/conf" />
+      <recent name="$PROJECT_DIR$/config/teamcity" />
+      <recent name="$PROJECT_DIR$/apps_data/teamcity/config" />
+      <recent name="$PROJECT_DIR$/config/agent/conf" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.jetbrains.teamcity.services.pojos.user" />
+      <recent name="com.jetbrains.teamcity.services" />
+      <recent name="com.jetbrains.teamcity.services.user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoginTest.loginTest">
+  <component name="RunManager" selected="JUnit.ProjectTest.testCreateNewProject">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="teamcity-automation" />
@@ -86,15 +129,15 @@
       <module name="teamcity-automation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jetbrains.teamcity.*" />
+          <option name="PATTERN" value="com.jetbrains.teamcity.ui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.jetbrains.teamcity" />
-      <option name="MAIN_CLASS_NAME" value="com.jetbrains.teamcity.LoginTest" />
+      <option name="PACKAGE_NAME" value="com.jetbrains.teamcity.ui" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.teamcity.ui.LoginTest" />
       <option name="METHOD_NAME" value="loginTest" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea -Dproject.root.dir=$ProjectFileDir$ -Dlog4j2.configurationFile=./config/log4j2-test.xml -Dframework.browser=CHROME" />
+      <option name="VM_PARAMETERS" value="-ea -Dproject.root.dir=$ProjectFileDir$ -Dframework.browser=CHROME" />
       <envs>
         <env name="-Dlog4j2.configurationFile" value="${user.dir}/config/log4j2-test.xml" />
       </envs>
@@ -102,18 +145,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProjectTest.testCreateNewProject" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="teamcity-automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.teamcity.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jetbrains.teamcity.api" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.teamcity.api.ProjectTest" />
+      <option name="METHOD_NAME" value="testCreateNewProject" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Dproject.root.dir=$ProjectFileDir$ -Dframework.browser=CHROME" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testCreateNewUser (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="teamcity-automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.teamcity.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jetbrains.teamcity.api" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.teamcity.api.UserTest" />
+      <option name="METHOD_NAME" value="testCreateNewUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testCreateNewUser" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="teamcity-automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.teamcity.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jetbrains.teamcity.api" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.teamcity.api.UserTest" />
+      <option name="METHOD_NAME" value="testCreateNewUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea -Dproject.root.dir=$ProjectFileDir$ -Dframework.browser=CHROME" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker/teamcity-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="envFilePath" value="" />
-          <option name="sourceFilePath" value="docker/teamcity-compose.yml" />
-        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -147,16 +231,18 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Docker.docker/teamcity-compose.yml.db: Compose Deployment" />
       <item itemvalue="Docker.docker/teamcity-compose.yml.teamcity-agent: Compose Deployment" />
-      <item itemvalue="Docker.docker/teamcity-compose.yml: Compose Deployment" />
+      <item itemvalue="JUnit.ProjectTest.testCreateNewProject" />
+      <item itemvalue="JUnit.UserTest.testCreateNewUser" />
+      <item itemvalue="JUnit.UserTest.testCreateNewUser (1)" />
       <item itemvalue="JUnit.LoginTest.loginTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTest.testCreateNewUser (1)" />
         <item itemvalue="JUnit.LoginTest.loginTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Docker.docker/teamcity-compose.yml.db: Compose Deployment" />
         <item itemvalue="Docker.docker/teamcity-compose.yml.teamcity-agent: Compose Deployment" />
-        <item itemvalue="Docker.docker/teamcity-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -169,8 +255,16 @@
       <option name="presentableId" value="Default" />
       <updated>1678206777114</updated>
       <workItem from="1678206778182" duration="64863000" />
-      <workItem from="1678473705971" duration="1954000" />
+      <workItem from="1678473705971" duration="56459000" />
     </task>
+    <task id="LOCAL-00001" summary="-- launcher added">
+      <created>1678475871444</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678475871444</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,18 +281,42 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-- launcher added" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- launcher added" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/LoginTest.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/Settings.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/platform/Settings.java</url>
           <line>14</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/UserTest.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/UserTest.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jetbrains/teamcity/services/ProjectService.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/ProjectTest.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/jetbrains/teamcity/api/ProjectTest.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

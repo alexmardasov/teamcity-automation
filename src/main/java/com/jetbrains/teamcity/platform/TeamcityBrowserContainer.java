@@ -1,4 +1,4 @@
-package com.jetbrains.teamcity;
+package com.jetbrains.teamcity.platform;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;

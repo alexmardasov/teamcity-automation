@@ -1,4 +1,4 @@
-package com.jetbrains.teamcity;
+package com.jetbrains.teamcity.platform;
 
 import org.testcontainers.containers.BrowserWebDriverContainer;
 
