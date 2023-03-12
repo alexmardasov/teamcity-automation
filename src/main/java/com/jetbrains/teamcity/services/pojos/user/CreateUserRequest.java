@@ -1,6 +1,6 @@
 package com.jetbrains.teamcity.services.pojos.user;
 
-public class CreateNewUserRequest {
+public class CreateUserRequest {
 	String name;
 	private String password;
 	private String email;
@@ -22,8 +22,8 @@ public class CreateNewUserRequest {
 		return name;
 	}
 
-	public static CreateNewUserRequest createUserWithBasicParameters() {
-		var userRequest = new CreateNewUserRequest();
+	public static CreateUserRequest createUserWithBasicParameters() {
+		var userRequest = new CreateUserRequest();
 		userRequest.name = "test_user" + System.currentTimeMillis();
 		userRequest.email = System.currentTimeMillis() + "@test.com";
 		userRequest.password = "1234566esdq>";

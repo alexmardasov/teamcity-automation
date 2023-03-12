@@ -1,5 +1,6 @@
 package com.jetbrains.teamcity.platform;
 
+import com.jetbrains.teamcity.services.AgentService;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.slf4j.Logger;
@@ -16,6 +17,8 @@ public class TestTracker implements BeforeAllCallback {
             teamcityLauncher = new TeamcityLauncher();
             teamcityLauncher.launch();
             log.info("Teamcity server is started.");
+            // When system has already started we need to authorize all the agents
+            AgentService.authorizeAgents();
             systemStarted = true;
         }
     }

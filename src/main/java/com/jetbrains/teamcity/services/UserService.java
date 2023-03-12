@@ -5,22 +5,20 @@ import com.jetbrains.teamcity.services.pojos.user.*;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
-import java.time.LocalDateTime;
-
 public class UserService {
     public static AllUsersWithCountResponse getAllUsers() {
-        return Specs.spec
+        return RestSpecifications.JSON_REQUEST_SPEC
                 .when()
-                .get("http://localhost:8112/app/rest/users")
+                .get(RestAssured.baseURI + "/app/rest/users")
                 .getBody()
                 .as(AllUsersWithCountResponse.class);
     }
 
-    public static CreateNewUserResponse createNewUser(CreateNewUserRequest request) {
-        return Specs.spec
+    public static CreateNewUserResponse createNewUser(CreateUserRequest request) {
+        return RestSpecifications.JSON_REQUEST_SPEC
                 .when()
                 .body(request).contentType(ContentType.JSON)
-                .post("http://localhost:8112/app/rest/users")
+                .post(RestAssured.baseURI + "/app/rest/users")
                 .getBody()
                 .as(CreateNewUserResponse.class);
     }
@@ -30,10 +28,11 @@ public class UserService {
                 .name("token" + System.currentTimeMillis())
                 .build();
 
-        var response = Specs.spec
+        var response = RestSpecifications.JSON_REQUEST_SPEC
                 .body(request)
                 .post(RestAssured.baseURI + "/app/rest/users/username:"+ userName + "/tokens");
         response.then().statusCode(200);
+
         return response.getBody().as(CreateTokenResponse.class);
     }
 }

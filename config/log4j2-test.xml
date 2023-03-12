@@ -10,6 +10,8 @@
     <Loggers>
         <Logger name="com.jetbrains.teamcity.*" level="INFO" additivity="false"/>
         <Logger name="STATS_LOGGER" level="OFF" additivity="false"/>
+        <Logger name="io.restassured.http.**" level="INFO" additivity="false"/>
+
 
         <!-- Apache HTTP transport used by testcontainers -->
         <Logger name="com.github.dockerjava.zerodep.shaded" level="INFO" additivity="false"/>

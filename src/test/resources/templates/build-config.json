@@ -1,0 +1,31 @@
+{
+  "id": "id",
+  "name": "name",
+  "project": {
+    "id": "MyProjectID"
+  },
+  "parameters": {
+    "property": [
+      {
+        "name": "myBuildParameter",
+        "value": "myValue"
+      }
+    ]
+  },
+  "steps": {
+    "step": [
+      {
+        "name": "myCommandLineStep",
+        "type": "simpleRunner",
+        "properties": {
+          "property": [
+            {
+              "name": "script.content",
+              "value": "echo 'Hello World!'"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

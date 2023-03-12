@@ -3,7 +3,7 @@ package com.jetbrains.teamcity.services.pojos.project;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateNewProjectResponse{
+public class CreateProjectResponse {
 	private ParentProject parentProject;
 	private String parentProjectId;
 	private String webUrl;
