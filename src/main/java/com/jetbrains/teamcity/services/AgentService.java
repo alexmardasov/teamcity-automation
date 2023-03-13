@@ -12,7 +12,7 @@ public class AgentService {
     private static final String AGENT_PATH = "/app/rest/agents";
 
     public static String authorizeAgent(String agentName, boolean authorize) {
-        log.info("Invoking http://localhost:8112/app/rest/projects endpoint..");
+        log.info("Invoking 'Authorize an agent' method with parameters {}, {}..", agentName, authorize);
         var response = RestSpecifications.TEXT_REQUEST_SPEC
                 .when()
                 .body(authorize).contentType(ContentType.TEXT)
@@ -24,20 +24,34 @@ public class AgentService {
     }
 
     public static GetAllAgentResponse getAllUnAuthorizedAgents() {
-        return RestSpecifications.JSON_REQUEST_SPEC
+        var locator = "locator=authorized:false";
+        log.info("Invoking 'Get all agents with locator {}..", locator);
+        var response = RestSpecifications.JSON_REQUEST_SPEC
                 .when()
-                .get(RestAssured.baseURI + AGENT_PATH + "?locator=authorized:false")
-                .getBody()
-                .as(GetAllAgentResponse.class);
+                .get(RestAssured.baseURI + AGENT_PATH + "?" + locator);
+
+        response.then().assertThat().statusCode(200).log().everything();
+        return response.getBody().as(GetAllAgentResponse.class);
     }
 
     public static void authorizeAgents() {
-        var agents = getAllUnAuthorizedAgents().getAgents();
-        if (!agents.isEmpty()) {
-            getAllUnAuthorizedAgents().getAgents()
-                    .stream()
-                    .map(AgentItem::getName)
-                    .forEach(agentName -> authorizeAgent(agentName, true));
+        // Despite the message "Teamcity server is started" in logs, server can be unavailable due-to some initialisation
+        // In this case we get the error attempting to get list of agents
+        // Thus we must retry the operation until the API will be available
+        boolean operationSucceed = false;
+        while (!operationSucceed) {
+            try {
+                var agents = getAllUnAuthorizedAgents().getAgents();
+                if (!agents.isEmpty()) {
+                    getAllUnAuthorizedAgents().getAgents()
+                            .stream()
+                            .map(AgentItem::getName)
+                            .forEach(agentName -> authorizeAgent(agentName, true));
+                }
+                operationSucceed = true;
+            } catch (Throwable e) {
+                log.warn("Couldn't get agents list, server is not initialized, try one more time..\n{}", e.getMessage());
+            }
         }
     }
 }

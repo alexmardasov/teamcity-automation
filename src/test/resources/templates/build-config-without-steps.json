@@ -1,0 +1,15 @@
+{
+  "id": "id",
+  "name": "name",
+  "project": {
+    "id": "MyProjectID"
+  },
+  "parameters": {
+    "property": [
+      {
+        "name": "myBuildParameter",
+        "value": "myValue"
+      }
+    ]
+  }
+}

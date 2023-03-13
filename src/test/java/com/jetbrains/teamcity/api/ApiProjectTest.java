@@ -9,13 +9,14 @@ import com.jetbrains.teamcity.services.pojos.vcsroots.CreateVCSRootRequest;
 import com.jetbrains.teamcity.services.pojos.vcsroots.CreateVCSRootResponseMatcher;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ProjectTest {
+public class ApiProjectTest {
 
     private CreateProjectResponse createProjectResponse;
     private CreateNewProjectRequest createNewProjectRequest;
@@ -40,7 +41,11 @@ public class ProjectTest {
         ProjectService.deleteProject(createProjectResponse.getId());
     }
 
+    /**
+     * Ensure that new project can be created
+     */
     @Test
+    @DisplayName("Teamcity API - Create new project")
     public void testCreateNewProject() {
 
         var createNewProjectResponseMatcher = new CreateProjectResponseMatcher()
@@ -50,11 +55,13 @@ public class ProjectTest {
                 .withWebUrl("http://localhost:8111/project.html?projectId=" + projectName);
 
         assertThat(createProjectResponse, createNewProjectResponseMatcher);
-
-        ProjectService.deleteProject(createProjectResponse.getId());
     }
 
+    /**
+     * Ensure that vcs root can be created for some project
+     */
     @Test
+    @DisplayName("Teamcity API - Create new VCS root")
     public void testCreateVSCRoot() {
 
         var branchProperty = new PropertyItem("branch", "main");
@@ -68,7 +75,7 @@ public class ProjectTest {
                 .project(new Project(projectName))
                 .build();
 
-        var vcsRootResponse = ProjectService.createVSCRoot(vscRootRequest);
+        var vcsRootResponse = ProjectService.createVCSRoot(vscRootRequest);
         var vcsRootResponseMatcher = new CreateVCSRootResponseMatcher()
                 .withVcsName("jetbrains.git")
                 .withId(projectName + "_" + vscRootRequest.getName())

@@ -9,7 +9,8 @@ import org.testcontainers.containers.RecordingFileFactory;
 
 import java.io.File;
 
-public class TeamcityBrowserContainer extends BrowserWebDriverContainer implements RecordingFileFactory {
+public class TeamcityBrowserContainer<SELF extends BrowserWebDriverContainer<SELF>>
+        extends BrowserWebDriverContainer<SELF> implements RecordingFileFactory {
 
     private String fileName;
     private File createdFile;
@@ -34,12 +35,12 @@ public class TeamcityBrowserContainer extends BrowserWebDriverContainer implemen
         return createdFile;
     }
 
-    public static TeamcityBrowserContainer provideDriver() {
+    public static TeamcityBrowserContainer<?> provideDriver() {
         switch (Settings.BROWSER) {
             case CHROME:
-                return new TeamcityBrowserContainer(chrome());
+                return new TeamcityBrowserContainer<>(chrome());
             case FIREFOX:
-                return new TeamcityBrowserContainer(firefox());
+                return new TeamcityBrowserContainer<>(firefox());
             default:
                 throw new IllegalArgumentException("Incorrect browser was set.");
         }

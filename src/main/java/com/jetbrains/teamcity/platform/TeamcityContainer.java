@@ -8,12 +8,12 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import java.io.File;
 import java.time.Duration;
 
-public class TeamcityLauncher {
+public class TeamcityContainer {
 
-    private static final Logger log = LoggerFactory.getLogger(TeamcityLauncher.class);
+    private static final Logger log = LoggerFactory.getLogger(TeamcityContainer.class);
     private static final String TC_SERVICE_NAME = "teamcity";
 
-    public TeamcityLauncher() {
+    public TeamcityContainer() {
     }
 
     /**
@@ -26,9 +26,14 @@ public class TeamcityLauncher {
                 .withExposedService(TC_SERVICE_NAME, 8111)
                 .withEnv("HOST_IP_ADDRESS", TC_SERVICE_NAME)
                 .waitingFor(TC_SERVICE_NAME, Wait.forLogMessage(".*TeamCity is running.*\\n", 1)
-                                .withStartupTimeout(Duration.ofMinutes(3)));
+                .withStartupTimeout(Duration.ofMinutes(3)))
+                .withPull(true);
 
         container.start();
+    }
+
+    public String getWebUiUrl() {
+        return "http://host.docker.internal:8112";
     }
 
     private static File getComposeFile() {

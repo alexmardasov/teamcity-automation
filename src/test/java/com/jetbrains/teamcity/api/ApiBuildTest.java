@@ -22,7 +22,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class BuildTest {
+public class ApiBuildTest {
 
     CreateBuildConfigurationRequest buildConfigRequest;
     CreateProjectResponse createdProjectResponse;
@@ -44,16 +44,6 @@ public class BuildTest {
                 .build();
 
         createdProjectResponse = ProjectService.createNewProject(createNewProjectRequest);
-
-        // For some big json payloads I decided to deserialize them using Object mapper
-        // The code looks clearer and understandable
-        buildConfigRequest = deserializer
-                .deserialize("templates/build-config.json", CreateBuildConfigurationRequest.class);
-
-        buildConfigRequest.setName("test_build" + System.currentTimeMillis());
-        buildConfigRequest.setProject(new Project(createdProjectResponse.getId()));
-
-        buildConfigResponse = BuildService.createNewBuildConfiguration(buildConfigRequest);
     }
 
     @AfterEach
@@ -62,9 +52,22 @@ public class BuildTest {
         ProjectService.deleteProject(createdProjectResponse.getId());
     }
 
+    /**
+     * Ensure that it is possible to create new build configuration
+     */
     @Test
     @DisplayName("Teamcity API - Create new build configuration")
     public void testCreateNewBuildConfiguration() {
+        // For some big json payloads I decided to deserialize them using Object mapper
+        // The code looks clearer and understandable
+        buildConfigRequest = deserializer.deserialize(
+                "templates/build-config-with-steps.json",
+                CreateBuildConfigurationRequest.class);
+
+        buildConfigRequest.setName("test_build" + System.currentTimeMillis());
+        buildConfigRequest.setProject(new Project(createdProjectResponse.getId()));
+
+        buildConfigResponse = BuildService.createNewBuildConfiguration(buildConfigRequest);
 
         var buildConfigMatcher = new CreateBuildConfigurationResponseMatcher()
                 .withName(buildConfigRequest.getName())
@@ -107,8 +110,23 @@ public class BuildTest {
         assertThat(responseStepProperty.get(0), requestStepPropertiesMatcher);
     }
 
+    /**
+     * Ensure that its possible to run build via API
+     */
     @Test
+    @DisplayName("Teamcity API - Check Run build")
     public void testRunBuild() {
+
+        // For some big json payloads I decided to deserialize them using Object mapper
+        // The code looks clearer and understandable
+        buildConfigRequest = deserializer.deserialize(
+                "templates/build-config-without-steps.json",
+                CreateBuildConfigurationRequest.class);
+
+        buildConfigRequest.setName("test_build" + System.currentTimeMillis());
+        buildConfigRequest.setProject(new Project(createdProjectResponse.getId()));
+
+        buildConfigResponse = BuildService.createNewBuildConfiguration(buildConfigRequest);
 
         var branchProperty = new PropertyItem("branch", "main");
         var urlProperty = new PropertyItem("url", "https://github.com/alexmardasov/test-rep.git");
@@ -121,7 +139,7 @@ public class BuildTest {
                 .project(new Project(projectName))
                 .build();
 
-        var vcsRootResponse = ProjectService.createVSCRoot(vscRootRequest);
+        var vcsRootResponse = ProjectService.createVCSRoot(vscRootRequest);
 
         var addVcsToBuildRequest = AddVCSToBuildRequest.builder()
                 .id(vcsRootResponse.getId())
@@ -134,6 +152,12 @@ public class BuildTest {
                 .buildType(new BuildType(buildConfigResponse.getId()))
                 .build();
 
-        var t = BuildService.runBuild(startBuildRequest);
+        var startBuildResponse = BuildService.runBuild(startBuildRequest);
+
+        var startBuildResponseMatcher = new StartBuildResponseMatcher()
+                .withBuildTypeId(startBuildRequest.getBuildType().getId())
+                .withState("queued");
+
+        assertThat(startBuildResponse, startBuildResponseMatcher);
     }
 }

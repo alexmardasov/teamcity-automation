@@ -8,8 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.*;
 
-public class UserTest {
+public class ApiUserTest {
 
+    /**
+     * Ensure that new users are created via API
+     */
     @Test
     @DisplayName("Teamcity API - Create new User")
     public void testCreateNewUser() {

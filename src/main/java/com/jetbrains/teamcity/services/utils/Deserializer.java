@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 public class Deserializer {
-
     Object o;
     public Deserializer(Object o) {
         this.o = o;
