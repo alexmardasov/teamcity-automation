@@ -14,18 +14,18 @@ public class UserService {
 
     public static AllUsersWithCountResponse getAllUsers() {
         log.info("Invoking 'Get all users' method..");
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .get(RestAssured.baseURI + USERS_PATH);
 
-        response.then().statusCode(200).log().everything();
+        response.then().assertThat().statusCode(200).log().everything();
 
         return response.getBody().as(AllUsersWithCountResponse.class);
     }
 
     public static CreateNewUserResponse createNewUser(CreateUserRequest request) {
         log.info("Invoking 'Create a new user' method with a payload {}..", request);
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .body(request).contentType(ContentType.JSON)
                 .post(RestAssured.baseURI + USERS_PATH);
@@ -41,7 +41,7 @@ public class UserService {
                 .name("token" + System.currentTimeMillis())
                 .build();
 
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .body(request)
                 .post(RestAssured.baseURI + USERS_PATH + "/username:" + userName + "/tokens");
 

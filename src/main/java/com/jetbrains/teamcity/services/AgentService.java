@@ -13,7 +13,7 @@ public class AgentService {
 
     public static String authorizeAgent(String agentName, boolean authorize) {
         log.info("Invoking 'Authorize an agent' method with parameters {}, {}..", agentName, authorize);
-        var response = RestSpecifications.TEXT_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptTextRequestSpec()
                 .when()
                 .body(authorize).contentType(ContentType.TEXT)
                 .put(RestAssured.baseURI + AGENT_PATH + "/name:" + agentName + "/authorized");
@@ -26,18 +26,18 @@ public class AgentService {
     public static GetAllAgentResponse getAllUnAuthorizedAgents() {
         var locator = "locator=authorized:false";
         log.info("Invoking 'Get all agents with locator {}..", locator);
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .get(RestAssured.baseURI + AGENT_PATH + "?" + locator);
 
-        response.then().assertThat().statusCode(200).log().everything();
+        response.then().assertThat().statusCode(200).log().ifError();
         return response.getBody().as(GetAllAgentResponse.class);
     }
 
     public static void authorizeAgents() {
         // Despite the message "Teamcity server is started" in logs, server can be unavailable due-to some initialisation
         // In this case we get the error attempting to get list of agents
-        // Thus we must retry the operation until the API will be available
+        // Thus we must ignore it and retry the operation until the API will be available
         boolean operationSucceed = false;
         while (!operationSucceed) {
             try {

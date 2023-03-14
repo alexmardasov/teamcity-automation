@@ -1,0 +1,23 @@
+{
+  "id": "id",
+  "name": "name",
+  "project": {
+    "id": "MyProjectID"
+  },
+  "settings": {
+    "property": [
+      {
+        "name": "artifactRules",
+        "value": "README.md"
+      }
+    ]
+  },
+  "parameters": {
+    "property": [
+      {
+        "name": "myBuildParameter",
+        "value": "myValue"
+      }
+    ]
+  }
+}

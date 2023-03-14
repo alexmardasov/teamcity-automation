@@ -17,6 +17,9 @@ public @Data class CreateBuildConfigurationRequest{
 	@JsonProperty("project")
 	private Project project;
 
+	@JsonProperty("settings")
+	private Settings settings;
+
 	@JsonProperty("parameters")
 	private Parameters parameters;
 

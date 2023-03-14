@@ -14,7 +14,25 @@ public class RestSpecifications {
             .accept(ContentType.TEXT)
             .header("Authorization", "Bearer " + TOKEN);
 
+    public static final RequestSpecification BUILDS_REQUEST_SPEC = RestAssured.given()
+            .accept(ContentType.JSON)
+            .header("Authorization", "Bearer " + TOKEN);
+
     static {
         RestAssured.baseURI = "http://localhost:8112";
     }
+
+
+    public static RequestSpecification getAcceptJsonRequestSpec() {
+        return RestAssured.given()
+                .accept(ContentType.JSON)
+                .header("Authorization", "Bearer " + TOKEN);
+    }
+
+    public static RequestSpecification getAcceptTextRequestSpec() {
+        return RestAssured.given()
+                .accept(ContentType.TEXT)
+                .header("Authorization", "Bearer " + TOKEN);
+    }
+
 }

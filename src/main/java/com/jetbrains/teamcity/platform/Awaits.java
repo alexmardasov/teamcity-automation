@@ -12,12 +12,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.concurrent.Callable;
 
 public class Awaits {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static final Logger log = LoggerFactory.getLogger(BuildService.class);
 
     /**
      * Locates the element by the given locator. Wait for it to become visible within specified timeout
@@ -39,6 +39,17 @@ public class Awaits {
         var wait = new WebDriverWait(driver.get(), Timeouts.ELEMENT_WAIT_TIMEOUT);
         return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(element, locator));
     }
+
+    /**
+     * Locates all elements by the given locator, waiting for them to become visible
+     * @param locator locator for an element
+     * @return elements
+     */
+    public static List<WebElement> elems(By locator) {
+        return new WebDriverWait(getDriver(), Timeouts.ELEMENT_WAIT_TIMEOUT)
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
 
     public static void setDriver(WebDriver driver) {
         Awaits.driver.set(driver);

@@ -1,5 +1,6 @@
 package com.jetbrains.teamcity.ui.pageobjects;
 
+import com.sun.tools.javac.Main;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -31,6 +32,29 @@ public class MainPage {
 
     public LeftSidebar leftSideBar() {
         return new LeftSidebar();
+    }
+
+    public String getBuildStatus(String buildId) {
+        return elem(By.cssSelector("[data-build-id='" + buildId + "'] [data-test-link-with-icon*='finished']")).getText();
+    }
+
+    public MainPage clickOnBuildStatus(String buildId) {
+        elem(By.cssSelector("[data-build-id='" + buildId + "'] [data-test-link-with-icon*='finished']")).click();
+        return this;
+    }
+
+    public MainPage openArtifacts() {
+        elem(By.cssSelector("[data-tab-title='Artifacts']")).click();
+        return this;
+    }
+
+    public WebElement getArtifactByFileName(String fileName) {
+        return elem(By.cssSelector("[data-test='ring-tab'] a[href*='" + fileName + "']"));
+    }
+
+    public MainPage runBuild() {
+        elem(By.cssSelector("[data-test='run-build']")).click();
+        return this;
     }
 
     public enum HeaderItem {

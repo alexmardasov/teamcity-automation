@@ -16,7 +16,7 @@ public class ProjectService {
 
     public static CreateProjectResponse createNewProject(CreateNewProjectRequest request) {
         log.info("Invoking 'Create a new project' method with a payload {}..", request);
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .body(request).contentType(ContentType.JSON)
                 .post(RestAssured.baseURI + PROJECTS_PATH);
@@ -27,7 +27,7 @@ public class ProjectService {
 
     public static void deleteProject(String projectId) {
         log.info("Invoking 'Delete a project' method with locator id:{}..", projectId);
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .contentType(ContentType.JSON)
                 .delete(RestAssured.baseURI + PROJECTS_PATH + "/id:" + projectId);
@@ -37,7 +37,7 @@ public class ProjectService {
 
     public static CreateVCSRootResponse createVCSRoot(CreateVCSRootRequest request) {
         log.info("Invoking 'Create VCS root' method with a payload..\n{}", request);
-        var response = RestSpecifications.JSON_REQUEST_SPEC
+        var response = RestSpecifications.getAcceptJsonRequestSpec()
                 .when()
                 .body(request).contentType(ContentType.JSON)
                 .post(RestAssured.baseURI + "/app/rest/vcs-roots");
