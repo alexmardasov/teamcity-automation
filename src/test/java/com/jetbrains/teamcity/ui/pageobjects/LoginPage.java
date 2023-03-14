@@ -1,5 +1,6 @@
 package com.jetbrains.teamcity.ui.pageobjects;
 
+import io.qameta.allure.Step;
 import lombok.extern.java.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

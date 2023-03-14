@@ -3,6 +3,7 @@ package com.jetbrains.teamcity.ui;
 import com.jetbrains.teamcity.platform.TeamcityBrowserContainer;
 import com.jetbrains.teamcity.platform.TeamcityContainer;
 import com.jetbrains.teamcity.platform.TeamcityWebDriverConfigExtension;
+import com.jetbrains.teamcity.platform.Timeouts;
 import com.jetbrains.teamcity.services.BuildService;
 import com.jetbrains.teamcity.services.ProjectService;
 import com.jetbrains.teamcity.services.pojos.build.*;
@@ -124,7 +125,9 @@ public class UIBuildTest {
     private String getBuildId() {
         //Wait until the build is finished
         String buildId = "";
-        while (buildId.isEmpty()) {
+        var startTime = System.currentTimeMillis();
+
+        while (buildId.isEmpty() || System.currentTimeMillis() - startTime < Timeouts.BUILD_SUCCESS_TIMEOUT) {
             try {
                 buildId = BuildService.getAllBuilds()
                         .getBuild().stream()
@@ -133,7 +136,7 @@ public class UIBuildTest {
                         .collect(Collectors.toList())
                         .get(0);
             } catch (Throwable e) {
-
+                System.err.println(e);
             }
         }
         return buildId;

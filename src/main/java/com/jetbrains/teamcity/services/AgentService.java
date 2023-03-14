@@ -1,11 +1,14 @@
 package com.jetbrains.teamcity.services;
 
+import com.jetbrains.teamcity.platform.Timeouts;
 import com.jetbrains.teamcity.services.pojos.agent.AgentItem;
 import com.jetbrains.teamcity.services.pojos.agent.GetAllAgentResponse;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.sound.midi.SysexMessage;
 
 public class AgentService {
     private static final Logger log = LoggerFactory.getLogger(AgentService.class);
@@ -39,7 +42,9 @@ public class AgentService {
         // In this case we get the error attempting to get list of agents
         // Thus we must ignore it and retry the operation until the API will be available
         boolean operationSucceed = false;
-        while (!operationSucceed) {
+        var startTime = System.currentTimeMillis();
+
+        while (!operationSucceed || System.currentTimeMillis() - startTime < Timeouts.SYSTEM_INIT_TIMEOUT) {
             try {
                 var agents = getAllUnAuthorizedAgents().getAgents();
                 if (!agents.isEmpty()) {

@@ -29,7 +29,6 @@ public class MainPage {
         nestedElem(mainPage(), By.cssSelector("[class*='button ProjectCreateSection']")).click();
         return new CreateProjectPage();
     }
-
     public LeftSidebar leftSideBar() {
         return new LeftSidebar();
     }

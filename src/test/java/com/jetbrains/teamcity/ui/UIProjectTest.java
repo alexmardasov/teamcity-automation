@@ -53,27 +53,27 @@ public class UIProjectTest {
      */
     @Test
     @DisplayName("Teamcity UI - Create new project")
-    public void testCreateProject() {
+    public void testCreateProjectWithBuildConfiguration() {
 
         mainPage.openFromHeader(MainPage.HeaderItem.PROJECTS);
 
         var newProject = mainPage.leftSideBar()
                 .createProject()
                 .setUrl(REPOSITORY_URL)
-                .proceedFirstScreen();
+                .proceed();
 
         var connectionSuccess = newProject.getConnectionMessage();
 
+        assertThat(connectionSuccess, Matchers.equalTo(
+                "✓ The connection to the VCS repository has been verified"));
+
         newProject.setProjectName(projectName)
                 .setBuildConfigurationName(buildName)
-                .proceedSecondScreen();
+                .proceed();
 
         var buildConfiguration = new BuildConfiguration();
 
         var createSuccess = buildConfiguration.getSuccessMessage();
-
-        assertThat(connectionSuccess, Matchers.equalTo(
-                "✓ The connection to the VCS repository has been verified"));
 
         assertThat(createSuccess, Matchers.equalTo(
                 "New project \"" + projectName + "\", build configuration \"" + buildName + "\"" +

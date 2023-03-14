@@ -48,14 +48,8 @@ public class CreateProjectPage {
         return this;
     }
 
-    public CreateProjectPage proceedFirstScreen() {
-        nestedElem(createFromUrlForm(),
-                By.cssSelector("input[type='submit']")).click();
-        return this;
-    }
-    public CreateProjectPage proceedSecondScreen() {
-        nestedElem(createProjectSecondScreen(),
-                By.cssSelector("input[type='submit']")).click();
+    public CreateProjectPage proceed() {
+        elem(By.cssSelector("input[type='submit']")).click();
         return this;
     }
 
