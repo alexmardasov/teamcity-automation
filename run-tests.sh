@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Set default browser to Firefox
+# Set default browser to Chrome
 BROWSER=CHROME
 
 # Parse command-line arguments
