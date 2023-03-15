@@ -36,11 +36,11 @@ public class UIBuildTest {
     private static final String BUILD_CONFIG_WITH_ARTIFACTS_TEMPLATE = "templates/build-config-with-artifacts.json";
     @Container
     private final TeamcityBrowserContainer<?> browser = TeamcityBrowserContainer.provideDriver();
-    private MainPage mainPage;
     private final String projectName = "TestProject" + System.currentTimeMillis();
     private final String buildName = "Build" + System.currentTimeMillis();
-    private CreateBuildConfigurationResponse buildConfigResponse;
     private final Deserializer deserializer = new Deserializer(this);
+    private CreateBuildConfigurationResponse buildConfigResponse;
+    private MainPage mainPage;
 
     @BeforeEach
     public void init(TeamcityContainer teamcity) {
@@ -97,10 +97,11 @@ public class UIBuildTest {
     }
 
     /**
-     * Ensure that new build can be created for a project.
+     * Ensure that build is finished with 'Success' status.
+     * Ensure that artifacts are produced after build execution and available on 'Artifacts' tab.
      */
     @Test
-    @DisplayName("Teamcity UI - Create new build for a project")
+    @DisplayName("Teamcity UI - Run build that is successfully finished and produce some artifacts")
     public void testRunBuildThatProducesArtifacts() {
 
         mainPage.openFromHeader(MainPage.HeaderItem.PROJECTS);
