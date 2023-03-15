@@ -57,6 +57,6 @@ a video only when test fails, but you can switch recording mode to record video 
 
 # What can be improved:
 - I disable CSRF protection https://www.jetbrains.com/help/teamcity/csrf-protection.html when start Teamcity server. It may be not secure but in terms of the task I suppose it's okay. Having this feature enabled adds additional complexity to making requests to API.
-- Think about how to run tests concurrently, and how to configure data for tests so that they do not interfere with each other. By now they run in one thread and I use the same user among the tests. I think this can be achieved by creating new users for each test with some special permissions (e.g. such users can see only projects and builds that they create).
+- Think about how to run tests concurrently, and how to configure data for tests so that they do not interfere with each other. By now they run in one thread and I use the same user among the tests. I think this can be achieved by creating new users for each test with some special permissions (e.g. such users can see only projects and builds that they are create).
 - Extend the number of fields that I use in payloads for requests and in asserts in responses. By far I use mostly necessary fields.
 - Extend Allure report with steps and output of test result
