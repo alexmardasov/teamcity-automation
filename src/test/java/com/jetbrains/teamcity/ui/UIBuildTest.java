@@ -97,7 +97,7 @@ public class UIBuildTest {
     }
 
     /**
-     * Ensure that build is finished with 'Success' status.
+     * Ensure that build can be run and is finished with 'Success' status.
      * Ensure that artifacts are produced after build execution and available on 'Artifacts' tab.
      */
     @Test
