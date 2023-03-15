@@ -67,9 +67,11 @@
 2. At right top corner press 'Run..' button.
 3. Wait until the build will finish its execution.
 4. Check build overview
-5. Check build artifacts. 
+5. Check build log for the presence of the script execution.
+6. Check build artifacts. 
 
 ### Result
 
 1. Build finished its execution and has 'Success' status.
-2. Build Artifacts contain README.md file from the repository.
+2. Step is executed and appears in build log with output: 'Hello World!' 
+3. Build Artifacts contain README.md file from the repository.
