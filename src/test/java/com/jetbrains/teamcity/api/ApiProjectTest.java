@@ -83,6 +83,4 @@ public class ApiProjectTest {
 
         assertThat(vcsRootResponse, vcsRootResponseMatcher);
     }
-
-
 }

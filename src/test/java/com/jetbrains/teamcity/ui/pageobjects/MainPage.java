@@ -56,6 +56,10 @@ public class MainPage {
         return this;
     }
 
+    public WebElement createProjectButton() {
+        return elem(By.cssSelector("[data-test='create-project']"));
+    }
+
     public enum HeaderItem {
         PROJECTS("[title='Projects']"),
         CHANGES("[title='Changes']"),

@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class TestTracker implements BeforeAllCallback, ParameterResolver {
-    private static final Logger log = LoggerFactory.getLogger(TestTracker.class);
+public class Starter implements BeforeAllCallback, ParameterResolver {
+    private static final Logger log = LoggerFactory.getLogger(Starter.class);
     private TeamcityContainer teamcityLauncher;
     private static boolean systemStarted = false;
     @Override

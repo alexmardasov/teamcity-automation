@@ -24,15 +24,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ApiBuildTest {
 
-    CreateBuildConfigurationRequest buildConfigRequest;
-    CreateProjectResponse createdProjectResponse;
-    CreateBuildConfigurationResponse buildConfigResponse;
-    Deserializer deserializer;
+    private static final String BUILD_CONFIG_WITH_STEPS_PAYLOAD = "templates/build-config-with-steps.json";
+    private static final String BUILD_CONFIG_WITHOUT_STEPS_PAYLOAD = "templates/build-config-without-steps.json";
+    private CreateBuildConfigurationRequest buildConfigRequest;
+    private CreateProjectResponse createdProjectResponse;
+    private CreateBuildConfigurationResponse buildConfigResponse;
+    private final Deserializer deserializer = new Deserializer(this);
     private String projectName;
 
     @BeforeEach
     public void onStart() {
-        deserializer = new Deserializer(this);
         projectName = "TestProj" + System.currentTimeMillis();
 
         var parentId = "_Root";
@@ -58,10 +59,10 @@ public class ApiBuildTest {
     @Test
     @DisplayName("Teamcity API - Create new build configuration")
     public void testCreateNewBuildConfiguration() {
-        // For some big json payloads I decided to deserialize them using Object mapper
+        // For some big json payloads I decided to deserialize them using Jackson Object mapper
         // The code looks clearer and understandable
         buildConfigRequest = deserializer.deserialize(
-                "templates/build-config-with-steps.json",
+                BUILD_CONFIG_WITH_STEPS_PAYLOAD,
                 CreateBuildConfigurationRequest.class);
 
         buildConfigRequest.setName("test_build" + System.currentTimeMillis());
@@ -117,10 +118,10 @@ public class ApiBuildTest {
     @DisplayName("Teamcity API - Check Run build")
     public void testRunBuild() {
 
-        // For some big json payloads I decided to deserialize them using Object mapper
+        // For some big json payloads I decided to deserialize them using Jackson Object mapper
         // The code looks clearer and understandable
         buildConfigRequest = deserializer.deserialize(
-                "templates/build-config-without-steps.json",
+                BUILD_CONFIG_WITHOUT_STEPS_PAYLOAD,
                 CreateBuildConfigurationRequest.class);
 
         buildConfigRequest.setName("test_build" + System.currentTimeMillis());

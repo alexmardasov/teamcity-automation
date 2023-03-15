@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# Set default browser to Firefox
+BROWSER=CHROME
+
+# Parse command-line arguments
+for arg in "$@"; do
+  case $arg in
+    --browser=*)
+      BROWSER="${arg#*=}"
+      shift
+      ;;
+    *)
+      # Unknown argument
+      ;;
+  esac
+done
+
 # check if the "apps_data" directory exists in the root of the project
 if [ -d "apps_data" ]; then
   echo "apps_data directory already exists"

@@ -36,6 +36,6 @@ public class UILoginTest {
                 .password("test")
                 .login();
 
-        assertTrue(mainPage.isDisplayed(), "Main Page is not available or user was not logged in.");
+        assertTrue(mainPage.createProjectButton().isDisplayed(), "Main Page is not available or user was not logged in.");
     }
 }
