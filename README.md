@@ -33,7 +33,6 @@ This will perform the following actions:
 - Run the tests using Maven.
 - Check if Allure is installed. If it's not, it will install it using Homebrew.
 - Start the Allure server and open the Allure report in your default web browser.
-- After the tests have finished, the Allure report will be automatically generated and opened in your default web browser.
 
 You can pass the argument `--browser` to the script to start the container with selected browser for tests, e.g. ``./run-tests.sh --browser=FIREFOX``
 (Note: I didn't debug tests for both browsers, so in Firefox they can be unstable. This was added to show the additional feature of the framework)
