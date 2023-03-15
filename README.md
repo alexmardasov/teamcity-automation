@@ -40,7 +40,7 @@ You can pass the argument `--browser` to the script to start the container with 
 # How it works:
 
 1. When script has launched it unzips data from "teamcity.zip" to apps_data folder. This is just an initial configuration of Teamcity.
-I decided to add it to avoid some additional steps when systems is starting, like start from backup, create a new database (It is not main scenarios and can be tested later).
+I decided to add it to avoid some additional steps when system is starting, like start from backup, create a new database (It is not main scenarios and can be tested later).
 It includes created internal database, user with credentials = {name:admin, password:test} and generated Bearer token for the user.
 
 2. When tests are compiling, Hamcrest matchers are automatically generated for all data classes (pojos). I use https://github.com/marmer/hamcrest-matcher-generator
