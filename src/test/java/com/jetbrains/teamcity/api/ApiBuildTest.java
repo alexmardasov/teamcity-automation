@@ -26,6 +26,8 @@ public class ApiBuildTest {
 
     private static final String BUILD_CONFIG_WITH_STEPS_PAYLOAD = "templates/build-config-with-steps.json";
     private static final String BUILD_CONFIG_WITHOUT_STEPS_PAYLOAD = "templates/build-config-without-steps.json";
+    private static final String REPOSITORY_URL = "https://github.com/alexmardasov/test-rep.git";
+
     private CreateBuildConfigurationRequest buildConfigRequest;
     private CreateProjectResponse createdProjectResponse;
     private CreateBuildConfigurationResponse buildConfigResponse;
@@ -130,7 +132,7 @@ public class ApiBuildTest {
         buildConfigResponse = BuildService.createNewBuildConfiguration(buildConfigRequest);
 
         var branchProperty = new PropertyItem("branch", "main");
-        var urlProperty = new PropertyItem("url", "https://github.com/alexmardasov/test-rep.git");
+        var urlProperty = new PropertyItem("url", REPOSITORY_URL);
         var properties = new Properties(List.of(branchProperty, urlProperty));
 
         var vscRootRequest = CreateVCSRootRequest.builder()

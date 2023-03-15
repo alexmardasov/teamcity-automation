@@ -18,6 +18,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ApiProjectTest {
 
+    private static final String REPOSITORY_URL = "https://github.com/alexmardasov/test-rep.git";
+
     private CreateProjectResponse createProjectResponse;
     private CreateNewProjectRequest createNewProjectRequest;
     private String projectName;
@@ -65,7 +67,7 @@ public class ApiProjectTest {
     public void testCreateVSCRoot() {
 
         var branchProperty = new PropertyItem("branch", "main");
-        var urlProperty = new PropertyItem("url", "https://github.com/alexmardasov/test-rep.git");
+        var urlProperty = new PropertyItem("url", REPOSITORY_URL);
         var properties = new Properties(List.of(branchProperty, urlProperty));
 
         var vscRootRequest = CreateVCSRootRequest.builder()

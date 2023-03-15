@@ -1,5 +1,4 @@
-===================================================================================
-
+---
 ### [TC-1] Login Page - Check login with correct credentials
     
     Priority: High
@@ -17,11 +16,11 @@
 1. User is logged in.
 2. Main page of the application is opened.
 
-===================================================================================
+---
 ### [TC-2] Login Page - Check login with incorrect credentials
 
     Priority: Low
-    Severity: Trivial
+    Severity: Minor
     Estimate: 10m
     Component: Teamcity UI
 
@@ -38,7 +37,7 @@
 ### Options
 1. Check for correct username and incorrect password.
 
-===================================================================================
+---
 ### [TC-3] Login Page - Check 'Remember me' feature
 
     Priority: Medium
@@ -62,7 +61,7 @@
 2. After p.7 Login page is not opened. User is automatically logged in and redirected to the main page.
 3. After p.9 Login page is opened.
 
-===================================================================================
+---
 ### [TC-4] Login Page - Check "Reset password" feature
 
     Priority: Medium
@@ -82,7 +81,7 @@
 ### Options
 1. Check that user can return to login page by clicking 'Login Page' link under the message from result.
 
-===================================================================================
+---
 ### [TC-5] Login Page - Check Login page default view
 
     Priority: Low

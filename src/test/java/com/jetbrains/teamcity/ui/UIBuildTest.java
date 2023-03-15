@@ -33,6 +33,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(TeamcityWebDriverConfigExtension.class)
 public class UIBuildTest {
     private static final String REPOSITORY_URL = "https://github.com/alexmardasov/test-rep.git";
+    private static final String BUILD_CONFIG_WITH_ARTIFACTS_TEMPLATE = "templates/build-config-with-artifacts.json";
     @Container
     private final TeamcityBrowserContainer<?> browser = TeamcityBrowserContainer.provideDriver();
     private MainPage mainPage;
@@ -56,7 +57,7 @@ public class UIBuildTest {
         var projectResponse = ProjectService.createNewProject(createNewProjectRequest);
 
         var buildConfigRequest = deserializer.deserialize(
-                "templates/build-config-with-artifacts.json",
+                BUILD_CONFIG_WITH_ARTIFACTS_TEMPLATE,
                 CreateBuildConfigurationRequest.class);
 
         buildConfigRequest.setName(buildName);
