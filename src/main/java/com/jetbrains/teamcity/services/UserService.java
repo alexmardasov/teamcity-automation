@@ -30,7 +30,7 @@ public class UserService {
                 .body(request).contentType(ContentType.JSON)
                 .post(RestAssured.baseURI + USERS_PATH);
 
-        response.then().statusCode(200).log().everything();
+        response.then().assertThat().statusCode(200).log().everything();
 
         return response.getBody().as(CreateNewUserResponse.class);
     }
@@ -45,7 +45,7 @@ public class UserService {
                 .body(request)
                 .post(RestAssured.baseURI + USERS_PATH + "/username:" + userName + "/tokens");
 
-        response.then().statusCode(200).log().everything();
+        response.then().assertThat().statusCode(200).log().everything();
 
         return response.getBody().as(CreateTokenResponse.class);
     }
