@@ -4,6 +4,7 @@ version: '3.7'
 services:
   teamcity:
     image: jetbrains/teamcity-server:${TEAMCITY_VERSION}
+    platform: linux/amd64
     ports:
       - "8112:8111"
     volumes:
@@ -14,6 +15,7 @@ services:
 
 
   teamcity-agent:
+    platform: linux/amd64
     depends_on:
       - teamcity
     image: jetbrains/teamcity-minimal-agent:${TEAMCITY_VERSION}
