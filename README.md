@@ -46,7 +46,7 @@ It includes created internal database, user with credentials = {name:admin, pass
 2. When tests are compiling, Hamcrest matchers are automatically generated for all data classes (pojos). I use https://github.com/marmer/hamcrest-matcher-generator
 library for it.
 
-3. When first test is launched, it starts Teamcity and Agent containers from ./docker/teamcity-compose.yml. I wait until "TeamCity is running" in logs, that means teamcity server has been 
+3. When first test is launched, it starts Teamcity and Agent containers from ./docker/teamcity-compose.yml. If there are no sutable containers on the host machine, Testcontainers will pull it. I wait until "TeamCity is running" in logs, that means teamcity server has been 
 initialized and launched, after that I'm trying to authorize all the agents. Only after that a test itself is going to be run.
 
 4. UI tests are launched a container with Browser and perform all the steps inside it. If some test will fail a new recording with its execution will be added to ./logs/vnc-records. By default it records
