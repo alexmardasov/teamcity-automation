@@ -1,9 +1,6 @@
 package com.jetbrains.teamcity.ui;
 
-import com.jetbrains.teamcity.platform.TeamcityBrowserContainer;
-import com.jetbrains.teamcity.platform.TeamcityContainer;
-import com.jetbrains.teamcity.platform.TeamcityWebDriverConfigExtension;
-import com.jetbrains.teamcity.platform.Timeouts;
+import com.jetbrains.teamcity.platform.*;
 import com.jetbrains.teamcity.services.BuildService;
 import com.jetbrains.teamcity.services.ProjectService;
 import com.jetbrains.teamcity.services.pojos.build.*;
@@ -139,6 +136,7 @@ public class UIBuildTest {
                         .get(0);
             } catch (Throwable e) {
                 System.err.println(e);
+                Awaits.doSleep();
             }
         }
         return buildId;

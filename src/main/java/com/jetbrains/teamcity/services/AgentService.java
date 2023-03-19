@@ -1,5 +1,6 @@
 package com.jetbrains.teamcity.services;
 
+import com.jetbrains.teamcity.platform.Awaits;
 import com.jetbrains.teamcity.platform.Timeouts;
 import com.jetbrains.teamcity.services.pojos.agent.AgentItem;
 import com.jetbrains.teamcity.services.pojos.agent.GetAllAgentResponse;
@@ -54,6 +55,7 @@ public class AgentService {
                             .forEach(agentName -> authorizeAgent(agentName, true));
                 }
                 operationSucceed = true;
+                Awaits.doSleep();
             } catch (Throwable e) {
                 log.warn("Couldn't get agents list, server is not initialized, try one more time..\n{}", e.getMessage());
             }

@@ -26,7 +26,7 @@ public class TeamcityContainer {
                 .withExposedService(TC_SERVICE_NAME, 8111)
                 .withEnv("HOST_IP_ADDRESS", TC_SERVICE_NAME)
                 .waitingFor(TC_SERVICE_NAME, Wait.forLogMessage(".*TeamCity is running.*\\n", 1)
-                .withStartupTimeout(Duration.ofMinutes(3)))
+                .withStartupTimeout(Duration.ofMinutes(4)))
                 .withPull(true);
 
         container.start();

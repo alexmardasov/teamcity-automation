@@ -50,6 +50,18 @@ public class Awaits {
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
+    /**
+     * Makes thread sleep for {@link  Timeouts#POLL_INTERVAL} time.
+     */
+    public static void doSleep() {
+        try {
+            Thread.sleep(Timeouts.POLL_INTERVAL);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void setDriver(WebDriver driver) {
         Awaits.driver.set(driver);
