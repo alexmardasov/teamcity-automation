@@ -55,9 +55,9 @@ public class AgentService {
                             .forEach(agentName -> authorizeAgent(agentName, true));
                 }
                 operationSucceed = true;
-                Awaits.doSleep();
             } catch (Throwable e) {
                 log.warn("Couldn't get agents list, server is not initialized, try one more time..\n{}", e.getMessage());
+                Awaits.doSleep();
             }
         }
     }
