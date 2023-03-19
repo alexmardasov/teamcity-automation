@@ -62,7 +62,6 @@ public class ApiBuildTest {
     @DisplayName("Teamcity API - Create new build configuration")
     public void testCreateNewBuildConfiguration() {
         // For some big json payloads I decided to deserialize them using Jackson Object mapper
-        // The code looks clearer and understandable
         buildConfigRequest = deserializer.deserialize(
                 BUILD_CONFIG_WITH_STEPS_PAYLOAD,
                 CreateBuildConfigurationRequest.class);
@@ -121,7 +120,6 @@ public class ApiBuildTest {
     public void testRunBuild() {
 
         // For some big json payloads I decided to deserialize them using Jackson Object mapper
-        // The code looks clearer and understandable
         buildConfigRequest = deserializer.deserialize(
                 BUILD_CONFIG_WITHOUT_STEPS_PAYLOAD,
                 CreateBuildConfigurationRequest.class);
