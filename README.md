@@ -1,6 +1,6 @@
 # Teamcity automation framework concept
 
-This is an automation testing framework concept for testing TeamCity API and UI using Java 11, Maven, Docker, Testcontainers, JUnit, RestAssured, Lombok, Hamcrest Matchers and Allure report.
+This is an automation testing framework concept for testing TeamCity API and UI using Java 11, Maven, Docker, Testcontainers, JUnit, Selenium, RestAssured, Lombok, Hamcrest Matchers and Allure report.
 
 # Getting started:
 

@@ -17,17 +17,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Testcontainers
-@ExtendWith(TeamcityWebDriverConfigExtension.class)
+@BrowserTest
 public class UIBuildTest {
     private static final String REPOSITORY_URL = "https://github.com/alexmardasov/test-rep.git";
     private static final String BUILD_CONFIG_WITH_ARTIFACTS_TEMPLATE = "templates/build-config-with-artifacts.json";

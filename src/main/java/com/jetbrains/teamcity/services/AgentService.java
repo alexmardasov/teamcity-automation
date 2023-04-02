@@ -39,7 +39,7 @@ public class AgentService {
     }
 
     public static void authorizeAgents() {
-        // Despite the message "Teamcity server is started" in logs, server can be unavailable due-to some initialisation
+        // Despite the message "Teamcity server is running" appears in logs, server can be unavailable due-to some initialisation
         // In this case we get the error attempting to get list of agents
         // Thus we must ignore it and retry the operation until the API will be available
         boolean operationSucceed = false;

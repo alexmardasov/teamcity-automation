@@ -16,7 +16,7 @@ public class ApiUserTest {
     @Test
     @DisplayName("Teamcity API - Create new User")
     public void testCreateNewUser() {
-        var userRequest = CreateUserRequest.createUserWithBasicParameters();
+        var userRequest = CreateUserRequest.createAdminUserWithBasicParameters();
         var createNewUserResponse = UserService.createNewUser(userRequest);
 
         var createNewUserResponseMatcher = new CreateNewUserResponseMatcher()

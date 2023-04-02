@@ -1,8 +1,8 @@
 package com.jetbrains.teamcity.ui;
 
+import com.jetbrains.teamcity.platform.BrowserTest;
 import com.jetbrains.teamcity.platform.TeamcityBrowserContainer;
 import com.jetbrains.teamcity.platform.TeamcityContainer;
-import com.jetbrains.teamcity.platform.TeamcityWebDriverConfigExtension;
 import com.jetbrains.teamcity.services.BuildService;
 import com.jetbrains.teamcity.services.ProjectService;
 import com.jetbrains.teamcity.ui.pageobjects.BuildConfiguration;
@@ -13,15 +13,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-@ExtendWith(TeamcityWebDriverConfigExtension.class)
-@Testcontainers
+@BrowserTest
 public class UIProjectTest {
 
     private static final String REPOSITORY_URL = "https://github.com/alexmardasov/test-rep.git";

@@ -21,6 +21,7 @@ public class Awaits {
 
     /**
      * Locates the element by the given locator. Wait for it to become visible within specified timeout
+     *
      * @param locator locator for the element
      * @return element
      */
@@ -51,7 +52,7 @@ public class Awaits {
     }
 
     /**
-     * Makes thread sleep for {@link  Timeouts#POLL_INTERVAL} time.
+     * Makes thread sleep for {@link Timeouts#POLL_INTERVAL} time.
      */
     public static void doSleep() {
         try {
