@@ -31,7 +31,7 @@ fi
 # unzip the file to the "apps_data" directory in the root of the project
 unzip -o ./config/teamcity.zip -d apps_data
 # Start tests
-mvn clean install test -T1
+mvn clean install test -T1 -Dframework.browser=$BROWSER
 
 # check if allure command is available
 if ! command -v allure &> /dev/null; then
